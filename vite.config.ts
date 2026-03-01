@@ -7,7 +7,7 @@ export default defineConfig(({ mode }) => {
     const env = loadEnv(mode, process.cwd(), '');
     
     return {
-      // 核心修正：指定 GitHub Pages 的子路徑，解決 404 錯誤
+      // 確保與您的新倉庫名稱完全一致
       base: '/cheer-clinic-done/', 
       
       server: {
@@ -21,15 +21,16 @@ export default defineConfig(({ mode }) => {
       },
       resolve: {
         alias: {
-          // 優化路徑別名設定
+          // 確保 @ 指向 src 資料夾
           '@': path.resolve(__dirname, './src'),
         }
       },
       build: {
         outDir: 'dist',
         emptyOutDir: true,
-        // 加入下面這行，強迫每次編譯後的檔案名稱都帶有隨機雜湊值
-        hash: true 
+        // 移除錯誤的 hash 屬性，Vite 預設就會在 build 時處理快取問題
+        sourcemap: false,
+        chunkSizeWarningLimit: 1500
       }
     };
 });
