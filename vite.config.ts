@@ -8,7 +8,7 @@ export default defineConfig(({ mode }) => {
     
     return {
       // 核心修正：指定 GitHub Pages 的子路徑，解決 404 錯誤
-      base: '/cheer-clinic-appointment_final/', 
+      base: '/cheer-clinic-done/', 
       
       server: {
         port: 3000,
